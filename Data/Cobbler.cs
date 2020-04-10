@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ExamTwoCodeQuestions.Data
 {
-    public class Cobbler : IOrderItem
+    public class Cobbler : IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
         /// The fruit used in the cobbler
@@ -13,7 +14,16 @@ namespace ExamTwoCodeQuestions.Data
         /// <summary>
         /// If the cobbler is served with ice cream
         /// </summary>
-        public bool WithIceCream { get; set; } = true;
+        private bool cream = true;
+        public bool WithIceCream
+        {
+            get { return cream; }
+            set
+            {
+                cream = value;
+                NotifyPropertyChanged("WithIceCream");
+            }
+        }
 
         /// <summary>
         /// Gets the price of the Cobbler
@@ -37,6 +47,14 @@ namespace ExamTwoCodeQuestions.Data
                 if(WithIceCream) { return new List<string>(); }
                 else { return new List<string>() { "Hold Ice Cream" }; }
             }
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(string property)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
         }
     }
 }

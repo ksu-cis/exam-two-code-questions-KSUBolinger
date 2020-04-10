@@ -6,7 +6,32 @@
              xmlns:local="clr-namespace:ExamTwoQuestions.PointOfSale"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock>Customize Cobbler</TextBlock>
-    </Grid>
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="125"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel>
+        <TextBlock FontSize="20" Text="Customized Cobbler" Foreground="Wheat" HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Vertical">
+            <Label>Flavor</Label>
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="Peach_Button" Click="Button_Clicked">Peach</Button>
+                    <Button Name="Cherry_Button" Click="Button_Clicked">Cherry</Button>
+                    <Button Name="Blueberry_Button" Click="Button_Clicked">Blueberry</Button>
+                </StackPanel>
+            <Label>Ice Cream</Label>
+            <StackPanel Orientation="Horizontal">
+                <Button Name="WithIceCream_Button" Click="Button_Clicked">Ice Cream</Button>
+                <Button Name="WithoutIceCream_Button" Click="Button_Clicked">No Ice Cream</Button>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
 </UserControl>
